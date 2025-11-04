@@ -1,174 +1,481 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Z Developers | ZEKE Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Zeke WebFolio</title>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    {{-- Load your compiled CSS (resources/css/app.css) via Vite --}}
+    @vite('resources/css/app.css')
 
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    {{-- Keep Remix Icons CDN if required --}}
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+</head>
 
-    <!-- Tailwind Play CDN config -->
-    <script>
-        window.tailwind = {
-            config: {
-                theme: {
-                    extend: {
-                        colors: {
-                            primary: '#0ea5a4'
-                        },
-                        fontFamily: {
-                            sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial']
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    </head>
+<body class="min-h-screen antialiased">
+<!-- Header / Navigation -->
+<header class="sticky top-0 z-50 glass-effect">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <img src="{{ asset('assets/Z-Developers Logo (Circle).png') }}" alt="Zeke Logo" class="w-12 h-12 rounded-2xl object-cover">
+            <div class="text-white">
+                <div class="font-bold tracking-tight text-base">Z DEVELOPERS</div>
+                <div class="text-xs text-white/50">by Zekieee</div>
+            </div>
+        </div>
 
-<body class="antialiased bg-gray-50 text-gray-800 font-sans">
+        <nav class="hidden md:flex items-center justify-center flex-1">
+            <ul class="flex gap-12 text-sm font-medium text-white/70">
+                <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+                <li><a href="#about" class="hover:text-white transition-colors">About</a></li>
+                <li><a href="#services" class="hover:text-white transition-colors">Services</a></li>
+                <li><a href="#projects" class="hover:text-white transition-colors">Projects</a></li>
+                <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+            </ul>
+        </nav>
 
-    <!-- Navigation Section -->
-    <header x-data="{ open: false, scrolled: false }"
-            @scroll.window="scrolled = (window.scrollY > 10)"
-            class="fixed top-0 left-0 w-full z-50 shadow-md transition-all duration-300"
-            x-bind:class="scrolled ? 'bg-white/90 backdrop-blur-sm' : 'bg-white'">
+        <div class="hidden md:flex items-center gap-4">
+            <a href="#contact" class="btn-primary">Let's Talk</a>
+        </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
+        <div class="md:hidden">
+            <button class="p-2 rounded-xl glass-effect">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</header>
 
-                <div class="flex-shrink-0">
-                    <a href="#home" class="block">
-                        <h3 class="text-xl font-bold text-gray-900">
-                            Z Developers
-                            <span class="block italic text-xs font-normal text-gray-600">by Zekieee</span>
-                        </h3>
+<main id="home" class="relative z-10">
+    <!-- Home Section -->
+    <section class="min-h-[95vh] max-w-7xl mx-auto px-6 flex flex-col-reverse lg:flex-row items-center gap-16 pt-12">
+        <div class="w-full lg:w-1/2">
+            <div class="max-w-2xl">
+                <div class="badge mb-6">
+                    <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                    Available for freelance
+                </div>
+
+                <h1 class="hero-title mb-6">
+                    <span class="block text-white mb-2">Building Digital</span>
+                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-[#B07CF0] via-[#923CB5] to-[#6C2EB5]">
+                        Experiences That Matter
+                    </span>
+                </h1>
+
+                <p class="hero-subheading mb-10 max-w-xl">
+                    Full-stack developer with 6+ years crafting scalable web solutions and custom applications.
+                    Specializing in clean architecture and strategic digital products.
+                </p>
+
+                <div class="flex items-center gap-4 mb-12">
+                    <a href="#contact" class="btn-primary">Start a Project</a>
+                    <a href="{{ asset('assets/CV Resume.pdf') }}" class="btn-secondary" target="_blank" rel="noopener noreferrer">
+                        View Resume
                     </a>
                 </div>
 
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#home" class="font-medium text-gray-600 hover:text-primary transition-colors duration-200">Home</a>
-                    <a href="#about" class="font-medium text-gray-600 hover:text-primary transition-colors duration-200">About</a>
-                    <a href="#project" class="font-medium text-gray-600 hover:text-primary transition-colors duration-200">Project</a>
-                    <a href="#contact" class="font-medium text-gray-600 hover:text-primary transition-colors duration-200">Contact</a>
-                </nav>
-
-                <div class="md:hidden">
-                    <button @click="open = !open" class="text-gray-600 hover:text-primary focus:outline-none">
-                        <span class="sr-only">Open main menu</span>
-                        <svg x-show="!open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                        </svg>
-                        <svg x-show="open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display: none;">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
+                <div class="flex items-center gap-4">
+                    <a class="social-icon" href="mailto:habee2004@gmail.com" aria-label="Email" target="_blank" rel="noopener noreferrer">
+                        <i class="ri-mail-line text-lg text-white/70"></i>
+                    </a>
+                    <a class="social-icon" href="https://www.linkedin.com/in/your-profile" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                        <i class="ri-linkedin-box-fill text-lg text-white/70"></i>
+                    </a>
+                    <a class="social-icon" href="https://github.com/itsZekiee" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+                        <i class="ri-github-fill text-lg text-white/70"></i>
+                    </a>
                 </div>
-
             </div>
         </div>
 
-        <div x-show="open"
-             @click.away="open = false"
-             class="md:hidden bg-white shadow-lg"
-             style="display: none;">
-            <div class="pt-2 pb-4 space-y-1">
-                <a href="#home" @click="open = false" class="block px-4 py-2 text-base font-medium text-gray-600 hover:bg-gray-100 hover:text-primary">Home</a>
-                <a href="#about" @click="open = false" class="block px-4 py-2 text-base font-medium text-gray-600 hover:bg-gray-100 hover:text-primary">About</a>
-                <a href="#project" @click="open = false" class="block px-4 py-2 text-base font-medium text-gray-600 hover:bg-gray-100 hover:text-primary">Project</a>
-                <a href="#contact" @click="open = false" class="block px-4 py-2 text-base font-medium text-gray-600 hover:bg-gray-100 hover:text-primary">Contact</a>
+        <div class="w-full lg:w-1/2 flex justify-center lg:justify-end">
+            <div class="portrait-frame w-[340px] h-[460px] floating">
+                <img src="{{ asset('assets/profileOne.jpg') }}" alt="Zeke portrait" class="w-full h-full object-cover">
             </div>
         </div>
-    </header>
-
-    <section id="home" class="min-h-screen flex items-center justify-center pt-16">
-        <h2 class="text-4xl font-semibold">Home</h2>
     </section>
 
-        <section id="about" class="min-h-screen flex items-center justify-center">
-            <h2 class="text-4xl font-semibold">About</h2>
-        </section>
-
-        <section id="project" class="min-h-screen flex items-center justify-center">
-            <h2 class="text-4xl font-semibold">Project</h2>
-        </section>
-
-        <section id="contact" class="min-h-screen flex items-center justify-center">
-            <h2 class="text-4xl font-semibold">Contact</h2>
-        </section>
-
-        <!-- Footer -->
-        <footer class="bg-gradient-to-b from-[#1B1B1B] to-[#003153] text-gray-300 py-12 px-4 sm:px-6 lg:px-8">
-            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-
-                <div>
-                    <h3 class="text-xl font-bold text-white">
-                        Z Developers
-                        <span class="block italic text-xs font-normal text-gray-400">by Zekieee</span>
-                    </h3>
-                    <p class="mt-2 text-gray-400">
-                        Crafting digital experiences and building robust software solutions. Passionate about clean code and innovative technology.
-                    </p>
-                    <div class="mt-4 flex space-x-5">
-                        <a href="mailto:your-email@example.com" class="text-gray-400 hover:text-primary transition-colors duration-200" aria-label="Google">
-                            <i class="fab fa-google fa-lg"></i>
-                        </a>
-                        <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition-colors duration-200" aria-label="GitHub">
-                            <i class="fab fa-github fa-lg"></i>
-                        </a>
-                        <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition-colors duration-200" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin fa-lg"></i>
-                        </a>
+    <!-- About Section -->
+    <section id="about" class="min-h-[95vh] max-w-7xl mx-auto px-6 flex flex-col justify-center py-20">
+        <div class="w-full">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Column - Image -->
+                <div class="order-2 lg:order-1">
+                    <div class="relative">
+                        <div class="portrait-frame w-full max-w-[500px] h-[600px] mx-auto lg:mx-0">
+                            <img src="{{ asset('assets/profileTwo.jpg') }}" alt="Zeke profile" class="w-full h-full object-cover">
+                        </div>
+                        <!-- Decorative element -->
+                        <div class="absolute -bottom-6 -right-6 w-48 h-48 bg-gradient-to-br from-[#923CB5]/20 to-[#6C2EB5]/20 rounded-3xl -z-10 hidden lg:block"></div>
                     </div>
                 </div>
 
-                <div>
-                    <h4 class="text-lg font-semibold text-white">Services</h4>
-                    <ul class="mt-4 space-y-2">
-                        <li><a href="#" class="hover:text-primary transition-colors duration-200">Web Services</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors duration-200">UI/UX Design</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors duration-200">Software Development</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors duration-200">Consulting</a></li>
-                    </ul>
-                </div>
+                <!-- Right Column - Content -->
+                <div class="order-1 lg:order-2">
+                    <div class="section-tag">ABOUT ME</div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                        Passionate About
+                        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-[#B07CF0] to-[#923CB5]">
+                        Crafting Solutions
+                    </span>
+                    </h2>
 
-                <div>
-                    <h4 class="text-lg font-semibold text-white">Contact Information</h4>
-                    <ul class="mt-4 space-y-3">
-                        <li class="flex items-start">
-                            <i class="fas fa-envelope mt-1 mr-3 w-4 text-center text-primary"></i>
-                            <a href="mailto:habee2004@gmail.com" class="hover:text-primary transition-colors duration-200">habee2004@gmail.com</a>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-phone mt-1 mr-3 w-4 text-center text-primary"></i>
-                            <span>(+63) 965 201 2720</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt mt-1 mr-3 w-4 text-center text-primary"></i>
-                            <span>Santa Maria, Bulacan, Philippines 3022</span>
-                        </li>
-                    </ul>
-                </div>
+                    <div class="space-y-4 text-white/70 leading-relaxed mb-8">
+                        <p>
+                            I am a highly motivated developer and strategic problem-solver, bringing six years of practical,
+                            project-focused freelance experience to the table. While specializing in front-end development
+                            (HTML/CSS, JavaScript, Angular), I possess valuable cross-functional skills.
+                        </p>
+                        <p>
+                            My expertise extends to backend development with PHP, Laravel, and MySQL, along with
+                            object-oriented programming using Java and C#. I am comfortable working across Windows and Linux
+                            environments and actively apply my foundational knowledge in web exploitation to build more
+                            secure applications.
+                        </p>
+                    </div>
 
+                    <!-- Tech Stack -->
+                    <div class="mb-8">
+                        <h3 class="text-lg font-semibold text-white mb-4">Core Technologies</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="badge">HTML/CSS</span>
+                            <span class="badge">JavaScript</span>
+                            <span class="badge">Angular</span>
+                            <span class="badge">PHP</span>
+                            <span class="badge">Laravel</span>
+                            <span class="badge">MySQL</span>
+                            <span class="badge">Java</span>
+                            <span class="badge">C#</span>
+                        </div>
+                    </div>
+
+                    <!-- Platforms -->
+                    <div class="mb-10">
+                        <h3 class="text-lg font-semibold text-white mb-4">Platforms</h3>
+                        <div class="flex flex-wrap gap-2">
+                        <span class="badge">
+                            <i class="ri-windows-fill"></i>
+                            Windows
+                        </span>
+                            <span class="badge">
+                            <i class="ri-terminal-box-line"></i>
+                            Linux
+                        </span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4">
+                        <a href="#contact" class="btn-primary">Get In Touch</a>
+                        <a href="#projects" class="btn-secondary">View Projects</a>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="mt-8 pt-8 border-t border-gray-700 text-center">
-                <p class="text-sm text-gray-500">
-                    &copy; 2025 Z Developers. All rights reserved.
+    <!-- Services Section -->
+    <section id="services" class="min-h-[95vh] max-w-7xl mx-auto px-6 flex flex-col justify-center py-20">
+        <div class="w-full">
+            <div class="max-w-3xl mb-16">
+                <div class="section-tag">SERVICES</div>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">What I Do Best</h2>
+                <p class="text-lg text-white/60 leading-relaxed">
+                    Delivering end-to-end digital solutions from concept to deployment,
+                    with a focus on performance and user experience.
                 </p>
             </div>
-        </footer>
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="service-card active">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#B07CF0] to-[#923CB5]">01</div>
+                        <i class="ri-arrow-right-up-line text-2xl text-white/40"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Responsive &amp; Dynamic Website</h3>
+                    <p class="text-white/60 leading-relaxed">
+                        Modern, mobile-first websites that adapt seamlessly to every device.
+                        Fast, interactive UIs combined with server-side optimizations for reliable production performance.
+                    </p>
+                </div>
 
-    <!-- Alpine.js -->
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+                <div class="service-card">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="text-3xl font-bold text-white/30">02</div>
+                        <i class="ri-arrow-right-up-line text-2xl text-white/40"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">UI/UX</h3>
+                    <p class="text-white/60 leading-relaxed">
+                        User-centered interfaces and interaction design focused on clarity, accessibility, and conversion.
+                        Wireframes, prototypes, and visual polish to create delightful user experiences.
+                    </p>
+                </div>
 
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+                <div class="service-card">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="text-3xl font-bold text-white/30">03</div>
+                        <i class="ri-arrow-right-up-line text-2xl text-white/40"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Software Developement build in C# C and Java Kotlin</h3>
+                    <p class="text-white/60 leading-relaxed">
+                        Robust desktop and backend solutions built with C\#, C, Java and Kotlin.
+                        Emphasis on maintainable architecture, strong typing, and reliable performance for enterprise and custom tools.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="text-3xl font-bold text-white/30">04</div>
+                        <i class="ri-arrow-right-up-line text-2xl text-white/40"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">System Consultation</h3>
+                    <p class="text-white/60 leading-relaxed">
+                        Expert analysis and strategic guidance to evaluate, design, and optimize your systems.
+                        Services include architecture reviews, performance tuning, security assessments, integration planning,
+                        and a practical roadmap to align technology with business objectives.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="min-h-[95vh] max-w-7xl mx-auto px-6 flex flex-col justify-center py-20">
+        <div class="w-full">
+            <div class="max-w-3xl mb-16">
+                <div class="section-tag">PORTFOLIO</div>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">Selected Works</h2>
+                <p class="text-lg text-white/60 leading-relaxed">
+                    A showcase of recent projects that demonstrate technical expertise and creative problem-solving.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <a href="https://github.com/itsZekiee/Secure-Vote-Ph-Capstone-Project.git" target="_blank" rel="noopener noreferrer"
+                   class="project-card group">
+                    <div class="aspect-[4/3] overflow-hidden bg-gradient-to-br from-purple-900/20 to-blue-900/20">
+                        <img src="{{ asset('assets/project-card(4).jpg') }}" alt="Secure Vote" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-xs font-medium text-[#923CB5]">Voting Platform</span>
+                            <i class="ri-arrow-right-up-line text-white/40 group-hover:text-[#923CB5] transition-colors"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Secure Vote</h3>
+                        <p class="text-sm text-white/50 leading-relaxed">
+                            Blockchain-based secure voting system with real-time results.
+                        </p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/itsZekiee/Makoo-Cafe-Website.git" target="_blank" rel="noopener noreferrer"
+                   class="project-card group">
+                    <div class="aspect-[4/3] overflow-hidden bg-gradient-to-br from-amber-900/20 to-orange-900/20">
+                        <img src="{{ asset('assets/project-card(3).jpg') }}" alt="Makoo Cafe" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-xs font-medium text-[#923CB5]">Restaurant</span>
+                            <i class="ri-arrow-right-up-line text-white/40 group-hover:text-[#923CB5] transition-colors"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Makoo Cafe</h3>
+                        <p class="text-sm text-white/50 leading-relaxed">
+                            Modern cafe website with online ordering system.
+                        </p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/itsZekiee/Bote-by-BeanHe-E-Commerce-Website.git" target="_blank" rel="noopener noreferrer"
+                   class="project-card group">
+                    <div class="aspect-[4/3] overflow-hidden bg-gradient-to-br from-green-900/20 to-teal-900/20">
+                        <img src="{{ asset('assets/project-card(2).jpg') }}" alt="Bote by BeanHe" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-xs font-medium text-[#923CB5]">E-Commerce</span>
+                            <i class="ri-arrow-right-up-line text-white/40 group-hover:text-[#923CB5] transition-colors"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Bote by BeanHe</h3>
+                        <p class="text-sm text-white/50 leading-relaxed">
+                            Full-featured online store with payment integration.
+                        </p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/itsZekiee/Medical-Appointment-Website.git" target="_blank" rel="noopener noreferrer"
+                   class="project-card group">
+                    <div class="aspect-[4/3] overflow-hidden bg-gradient-to-br from-blue-900/20 to-indigo-900/20">
+                        <img src="{{ asset('assets/project-card(1).jpg') }}" alt="Medical Appointment" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-xs font-medium text-[#923CB5]">Healthcare</span>
+                            <i class="ri-arrow-right-up-line text-white/40 group-hover:text-[#923CB5] transition-colors"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Medical Portal</h3>
+                        <p class="text-sm text-white/50 leading-relaxed">
+                            Patient booking system with calendar integration.
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="min-h-[95vh] max-w-7xl mx-auto px-6 flex flex-col justify-center py-20">
+        <div class="w-full">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Column - Contact Info -->
+                <div>
+                    <div class="section-tag">GET IN TOUCH</div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                        Let's Build
+                        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-[#B07CF0] to-[#923CB5]">
+                        Something Together
+                    </span>
+                    </h2>
+
+                    <p class="text-lg text-white/60 leading-relaxed mb-8">
+                        Have a project in mind or just want to chat? I'm always open to discussing new opportunities,
+                        creative ideas, or partnerships.
+                    </p>
+
+                    <!-- Contact Details -->
+                    <div class="space-y-6 mb-10">
+                        <div class="flex items-start gap-4">
+                            <div class="social-icon">
+                                <i class="ri-mail-line text-lg text-white/70"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold mb-1">Email</h3>
+                                <a href="mailto:habee2004@gmail.com" class="text-white/60 hover:text-[#923CB5] transition-colors">
+                                    habee2004@gmail.com
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="social-icon">
+                                <i class="ri-map-pin-line text-lg text-white/70"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold mb-1">Location</h3>
+                                <p class="text-white/60">Santa Maria, Bulacan, Philippines</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="social-icon">
+                                <i class="ri-time-line text-lg text-white/70"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold mb-1">Response Time</h3>
+                                <p class="text-white/60">Within 24 hours</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div>
+                        <h3 class="text-white font-semibold mb-4">Follow Me</h3>
+                        <div class="flex items-center gap-3">
+                            <a class="social-icon" href="mailto:habee2004@gmail.com" aria-label="Email" target="_blank" rel="noopener noreferrer">
+                                <i class="ri-mail-line text-lg text-white/70"></i>
+                            </a>
+                            <a class="social-icon" href="https://www.linkedin.com/in/your-profile" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                                <i class="ri-linkedin-box-fill text-lg text-white/70"></i>
+                            </a>
+                            <a class="social-icon" href="https://github.com/itsZekiee" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+                                <i class="ri-github-fill text-lg text-white/70"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Contact Form -->
+                <div class="glass-effect rounded-2xl p-8">
+                    <form action="{{ route('contact.send') }}" method="POST" class="space-y-6">
+                        @csrf
+
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-white/80 mb-2">Your Name</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                class="input-field"
+                                placeholder="John Doe"
+                                required
+                            >
+                        </div>
+
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-white/80 mb-2">Email Address</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                class="input-field"
+                                placeholder="john@example.com"
+                                required
+                            >
+                        </div>
+
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-white/80 mb-2">Subject</label>
+                            <input
+                                type="text"
+                                id="subject"
+                                name="subject"
+                                class="input-field"
+                                placeholder="Project Inquiry"
+                                required
+                            >
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-white/80 mb-2">Message</label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                class="input-field"
+                                placeholder="Tell me about your project..."
+                                required
+                            ></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary w-full flex items-center justify-center gap-2">
+                            <span>Send Message</span>
+                            <i class="ri-send-plane-fill"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <img src="{{ asset('assets/Z-Developers Logo (Circle).png') }}" alt="Zeke Logo" class="w-10 h-10 rounded-xl object-cover">
+                    <div class="text-white/60 text-sm">
+                        © 2025 Z Developers. All rights reserved.
+                    </div>
+                </div>
+
+                <nav class="flex flex-wrap items-center gap-4 text-sm">
+                    <a href="/docs" class="text-white/60 hover:text-white transition-colors">Documentation</a>
+                    <a href="/consulting-pricing" class="text-white/60 hover:text-white transition-colors">Consultation Pricing</a>
+                    <a href="#" class="text-white/60 hover:text-white transition-colors">Privacy Policy</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+</main>
 </body>
 </html>
