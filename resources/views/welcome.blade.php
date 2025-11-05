@@ -66,7 +66,7 @@
                 </h1>
 
                 <p class="hero-subheading mb-10 max-w-xl">
-                    Full-stack developer with 6+ years crafting scalable web solutions and custom applications.
+                    Junior Front-End Developer with 6+ years crafting scalable web solutions and custom applications.
                     Specializing in clean architecture and strategic digital products.
                 </p>
 
