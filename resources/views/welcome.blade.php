@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Zeke WebFolio</title>
 
-    {{-- Load your compiled CSS (resources/css/app.css) via Vite --}}
+    {{-- Custom Style --}}
     @vite('resources/css/app.css')
-
-    {{-- Keep Remix Icons CDN if required --}}
+    {{-- Keep Remix Icons CDN --}}
     <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+
 </head>
 
 <body class="min-h-screen antialiased">
