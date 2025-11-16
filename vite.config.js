@@ -14,6 +14,6 @@ export default defineConfig({
     build: {
         manifest: true,
         outDir: 'public/build',
-        emptyOutDir: false, // set true to clean; false if you upload files manually
+        emptyOutDir: false,
     },
 });
