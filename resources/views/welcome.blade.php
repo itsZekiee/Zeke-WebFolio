@@ -7,7 +7,7 @@
 
     {{-- Custom Style --}}
     @vite('resources/css/app.css')
-    {{-- Keep Remix Icons CDN --}}
+    {{-- Remix Icons CDN --}}
     <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
 
 </head>
