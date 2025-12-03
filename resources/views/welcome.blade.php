@@ -304,19 +304,19 @@
                     </div>
                 </a>
 
-                <a href="https://github.com/itsZekiee/Medical-Appointment-Website.git" target="_blank" rel="noopener noreferrer"
+                <a href="https://github.com/ishammy/A1SBERG-Website.git" target="_blank" rel="noopener noreferrer"
                    class="project-card group">
                     <div class="aspect-[4/3] overflow-hidden bg-gradient-to-br from-blue-900/20 to-indigo-900/20">
-                        <img src="{{ asset('assets/project-card(1).jpg') }}" alt="Medical Appointment" class="w-full h-full object-cover">
+                        <img src="{{ asset('assets/A1S-Image.png') }}" alt="A1SBERG Website LMS" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <div class="flex items-center gap-2 mb-3">
-                            <span class="text-xs font-medium text-[#923CB5]">Healthcare</span>
+                            <span class="text-xs font-medium text-[#923CB5]">Education</span>
                             <i class="ri-arrow-right-up-line text-white/40 group-hover:text-[#923CB5] transition-colors"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2">Medical Portal</h3>
+                        <h3 class="text-lg font-bold text-white mb-2">A1SBERG Website LMS</h3>
                         <p class="text-sm text-white/50 leading-relaxed">
-                            Patient booking system with calendar integration.
+                            Learning Management System for educational institutions.
                         </p>
                     </div>
                 </a>
