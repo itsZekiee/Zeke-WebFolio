@@ -407,7 +407,7 @@
                                 id="name"
                                 name="name"
                                 class="input-field"
-                                placeholder="John Doe"
+                                placeholder="Niel Ezequiel Dungao"
                                 required
                             >
                         </div>
