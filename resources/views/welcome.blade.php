@@ -270,19 +270,19 @@
                     </div>
                 </a>
 
-                <a href="https://github.com/itsZekiee/Makoo-Cafe-Website.git" target="_blank" rel="noopener noreferrer"
+                <a href="https://github.com/itsZekiee/Beyond-The-Grind.git" target="_blank" rel="noopener noreferrer"
                    class="project-card group">
                     <div class="aspect-[4/3] overflow-hidden bg-gradient-to-br from-amber-900/20 to-orange-900/20">
-                        <img src="{{ asset('assets/project-card(3).jpg') }}" alt="Makoo Cafe" class="w-full h-full object-cover">
+                        <img src="{{ asset('assets/Beyond The Grind Wallpaper.png') }}" alt="Beyond The Grind" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <div class="flex items-center gap-2 mb-3">
-                            <span class="text-xs font-medium text-[#923CB5]">Restaurant</span>
+                            <span class="text-xs font-medium text-[#923CB5]">Apparel & Lifestyle</span>
                             <i class="ri-arrow-right-up-line text-white/40 group-hover:text-[#923CB5] transition-colors"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2">Makoo Cafe</h3>
+                        <h3 class="text-lg font-bold text-white mb-2">Beyond The Grind</h3>
                         <p class="text-sm text-white/50 leading-relaxed">
-                            Modern cafe website with online ordering system.
+                            Official website for Beyond The Grind apparel and gym wear.
                         </p>
                     </div>
                 </a>
