@@ -26,7 +26,7 @@ Route::post('/contact/send', function (Request $request) {
 
     try {
         Mail::send('emails.contact', $validated, function ($message) use ($validated) {
-            $message->to('your.email@example.com') // Replace with your actual email
+            $message->to(config('mail.from.address')) // Using configured 'from' address as recipient by default
             ->subject('New Contact Form Submission: ' . $validated['subject'])
                 ->replyTo($validated['email'], $validated['name']);
         });
