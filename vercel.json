@@ -39,11 +39,13 @@
         "APP_EVENTS_CACHE": "/tmp/bootstrap/cache/events.php",
         "APP_PACKAGES_CACHE": "/tmp/bootstrap/cache/packages.php",
         "APP_ROUTES_CACHE": "/tmp/bootstrap/cache/routes.php",
+        "APP_SERVICES_CACHE": "/tmp/bootstrap/cache/services.php",
         "VIEW_COMPILED_PATH": "/tmp/views",
         "CACHE_STORE": "array",
         "SESSION_DRIVER": "cookie",
         "LOG_CHANNEL": "stderr",
         "SESSION_LIFETIME": "120",
-        "APP_SERVICES_CACHE": "/tmp/bootstrap/cache/services.php"
+        "DB_CONNECTION": "sqlite",
+        "DB_DATABASE": ":memory:"
     }
 }
