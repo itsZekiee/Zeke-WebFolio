@@ -24,6 +24,7 @@ putenv('APP_ROUTES_CACHE=/tmp/bootstrap/cache/routes.php');
 putenv('APP_EVENTS_CACHE=/tmp/bootstrap/cache/events.php');
 
 putenv('APP_DEBUG=true');
+putenv('APP_KEY=base64:8jX6wlfpZGNmte7S+VSVZ8eSycJiNAJZwkP4p3GyvMY=');
 putenv('LOG_CHANNEL=stderr');
 putenv('LOG_LEVEL=debug');
 putenv('DB_CONNECTION=sqlite');
